@@ -1,0 +1,32 @@
+{
+  "name": "dsh-packages",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DSH Web 插件聚合生态包：面向 DeepSeek Harness 浏览器界面（Web profile）的客户端插件 monorepo。",
+  "type": "module",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build-client.mjs",
+    "build:watch": "node scripts/build-client.mjs --watch",
+    "typecheck": "pnpm -r --parallel typecheck",
+    "create:plugin": "node scripts/create-plugin.mjs",
+    "install:profile": "node scripts/install-to-profile.mjs"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-client-locale": "^0.1.1-rc.2",
+    "@deepseek-ai/dsh-client-runtime": "^0.1.1-rc.2",
+    "@deepseek-ai/dsh-client-ui-primitives": "^0.1.1-rc.2",
+    "@deepseek-ai/dsh-client-ui-slots": "^0.1.1-rc.2",
+    "@deepseek-ai/dsh-invariants": "^0.1.1-rc.2",
+    "@types/react": "~18.3.1",
+    "@types/react-dom": "~18.3.1",
+    "esbuild": "^0.24.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.7.0"
+  }
+}

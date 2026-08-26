@@ -1,0 +1,64 @@
+/* 示例插件样式：全部使用 DSH 主题 token（--dsw-alias-* / --dsw-specific-*），
+   自动适配亮色/暗色主题，不写死颜色值。 */
+
+.dshg-footer-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 8px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 13px;
+  line-height: 24px;
+  cursor: pointer;
+  transition: background 0.1s ease, color 0.1s ease, border-color 0.1s ease;
+}
+
+.dshg-footer-action:hover,
+.dshg-footer-action:focus-visible {
+  background: var(--dsw-alias-interactive-bg-hover-solid, var(--dsw-alias-bg-layer-1));
+  color: var(--dsw-alias-label-primary);
+  border-color: var(--dsw-alias-border-l2);
+}
+
+.dshg-footer-action--rail {
+  padding: 0;
+  width: 28px;
+  justify-content: center;
+}
+
+.dshg-footer-action__icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.dshg-footer-action__label {
+  white-space: nowrap;
+}
+
+.dshg-dock {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 2px 4px 0;
+  color: var(--dsw-alias-label-tertiary);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.dshg-dock__greeting {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--dsw-alias-label-secondary);
+}
+
+.dshg-dock__clock {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,20 @@
+# 依赖
+node_modules/
+.pnpm-store/
+
+# 构建产物（各插件包的 lib/ 为构建输出，发布时单独打包）
+packages/*/lib/
+packages/*/dist/
+
+# TypeScript
+*.tsbuildinfo
+
+# 工具
+.DS_Store
+*.log
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
