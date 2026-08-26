@@ -75,8 +75,8 @@ importers:
         specifier: ~18.3.1
         version: 18.3.31
       hotnews:
-        specifier: ^0.1.7-beta.0
-        version: 0.1.7-beta.0(@types/react@18.3.31)
+        specifier: ^0.1.7-beta.1
+        version: 0.1.7-beta.1(@types/react@18.3.31)
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -1186,8 +1186,8 @@ packages:
   hast-util-whitespace@3.0.0:
     resolution: {integrity: sha512-88JUN06ipLwsnv+dVn+OIYOvAuvBMy/Qoi6O7mQHxdPXpjy+Cd6xRkWwux7DKO+4sYILtLBRIKgsdpS2gQc7qw==}
 
-  hotnews@0.1.7-beta.0:
-    resolution: {integrity: sha512-KlS0bgzP1i/88/vTxxFstahaklXKHcVAhgDtW74Z99FQOp9hP+LYQkXcqERyZpXq004yZ0zXlStiOdpxYPzKOA==}
+  hotnews@0.1.7-beta.1:
+    resolution: {integrity: sha512-OgfyUrVeOUNrPkosMPhlQjs5BicUGVMVu17IBHu1PywCz0/J/8fGP6kg7kLzwgS9zSppu8RgaQqCEZEYK8JHyg==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -2614,7 +2614,7 @@ snapshots:
     dependencies:
       '@types/hast': 3.0.5
 
-  hotnews@0.1.7-beta.0(@types/react@18.3.31):
+  hotnews@0.1.7-beta.1(@types/react@18.3.31):
     dependencies:
       ink: 7.1.1(@types/react@18.3.31)(react-devtools-core@7.0.1)(react@19.2.8)
       meow: 14.1.0

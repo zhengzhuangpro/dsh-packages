@@ -1,5 +1,5 @@
 {
-  "name": "@dsh-ecosystem/sample-greeter",
+  "name": "@zhengzhuangpro/dsh-sample-greeter",
   "version": "0.1.0",
   "description": "DSH Web 示例插件：展示客户端插件的标准写法——i18n、sidebar.footer.action 与 conversation.composer.dock 双 Slot 注册、CSS 注入与实时时钟。",
   "type": "module",

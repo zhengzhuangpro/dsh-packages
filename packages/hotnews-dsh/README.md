@@ -1,31 +1,47 @@
 # @zhengzhuangpro/dsh-hotnews
 
-在 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 里看热搜 📰
+[![npm version](https://img.shields.io/npm/v/@zhengzhuangpro/dsh-hotnews.svg)](https://www.npmjs.com/package/@zhengzhuangpro/dsh-hotnews)
+[![npm downloads](https://img.shields.io/npm/dm/@zhengzhuangpro/dsh-hotnews.svg)](https://www.npmjs.com/package/@zhengzhuangpro/dsh-hotnews)
+[![license](https://img.shields.io/npm/l/@zhengzhuangpro/dsh-hotnews.svg)](../../LICENSE)
 
-百度 / 微博 / 抖音 / 虎扑 / 知乎 / 掘金 / 36氪 / GitHub —— 一个页签搞定。
+> 📰 在 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 里看热搜——百度 / 微博 / 抖音 / 虎扑 / 知乎 / 掘金 / 36氪 / GitHub，一个页签搞定。
 
-## 效果
+## ✨ 功能亮点
 
-装完重启，在会话页面顶部切换到 🔥**热榜**页签（和 Chat 并列），就是完整的热榜页面：
+- 🔥 **八大平台热榜聚合**：百度、微博、抖音、虎扑、知乎、掘金、36氪、GitHub
+- 🎨 **自动主题适配**：跟随 DSH 亮色 / 暗色主题
+- 🌐 **中英文国际化**：跟随界面语言自动切换
+- 🔄 **一键刷新**：实时获取最新热榜数据
+- 🖱️ **点击跳转**：直接打开原文链接
+- 📦 **零配置开箱即用**：数据经 Host 同源路由中转，无跨域问题
 
-- 顶部来源切换芯片（点击切换平台）
-- 刷新按钮 + 更新时间
-- 热门列表（标题 / 热度 / 点击跳转原文）
-- 自动跟随亮色 / 暗色主题，中文 / 英文跟随界面语言
+## 📸 使用效果
 
-## 安装
+```
+┌─────────────────────────────────────────────┐
+│  [ Chat ]  [ 🔥 热榜 ]                      │
+├─────────────────────────────────────────────┤
+│  [百度] [微博] [抖音] [虎扑] [知乎] ...       │
+│                                              │
+│  1. 某某热搜话题                    1234万    │
+│  2. 某某新闻事件                     890万    │
+│  3. ...                                      │
+└─────────────────────────────────────────────┘
+```
 
-**方式一（推荐）：在 DSH 聊天里直接说**
+## 🚀 安装
 
-打开 DeepSeek Harness Web 界面，对 AI 说：
+### 方式一：AI 一键安装（推荐）
 
-> 你帮我安装一下 dsh plugin --profile web add @zhengzhuangpro/dsh-hotnews
+在 DSH Web 界面聊天框中输入：
 
-AI 会自动执行安装并补充必要的配置条目，重启即生效。
+```
+帮我安装 dsh plugin --profile web add @zhengzhuangpro/dsh-hotnews
+```
 
-**方式二：终端一键搞定**
+AI 会自动完成安装和配置，重启即生效。
 
-装包 + 追加配置条目，一条命令复制粘贴即可：
+### 方式二：终端手动安装
 
 ```bash
 npx dsh plugin --profile web add @zhengzhuangpro/dsh-hotnews \
@@ -42,41 +58,106 @@ EOF
 npx @deepseek-ai/dsh@latest web
 ```
 
-> ⚠ 如果只跑 `npx dsh plugin --profile web add` 而没追加配置条目，
-> 插件不会加载（热榜页签不会出现，`/hotnews/api` 接口 404）。
-> 这是 DSH 当前的设计：安装包与挂载条目是两步操作，命令已帮你合在一起了。
+> ⚠️ 仅执行 `npx dsh plugin add` 而不追加配置条目，插件不会加载（热榜页签不出现，`/hotnews/api` 返回 404）。上方命令已将两步合并处理。
 
-## 数据来源
-
-插件复用 [hotnews](https://github.com/zhengzhuangpro/hotnews)（>= 0.1.7-beta.0）npm 库的
-`fetchNews` / `sources` API，构建时打包进 `lib/index.js`——
-用户安装时**不需要装 hotnews**，也没有跨域问题（数据经 Host 同源路由中转）。
-
-## 开发
-
-```bash
-git clone <本仓库地址>
-pnpm install
-pnpm --filter @zhengzhuangpro/dsh-hotnews bundle
-pnpm install:profile @zhengzhuangpro/dsh-hotnews
-npx @deepseek-ai/dsh@latest web --port 3081
-```
-
-改完代码后：
-
-```bash
-pnpm --filter @zhengzhuangpro/dsh-hotnews bundle
-pnpm install:profile @zhengzhuangpro/dsh-hotnews
-# 刷新页面即可
-```
-
-## 卸载
+## 🗑️ 卸载
 
 ```bash
 dsh plugin --profile web remove @zhengzhuangpro/dsh-hotnews
-# 同时手动删掉 ~/.dsh/profiles/web/cordis.patch.yml 里对应的 - insert: 块
+# 同时删除 ~/.dsh/profiles/web/cordis.patch.yml 中对应的 - insert: 块
 ```
 
-## 许可
+---
+
+## 🛠️ 开发
+
+### 环境准备
+
+```bash
+git clone https://github.com/zhengzhuangpro/dsh-packages.git
+cd dsh-packages
+pnpm install
+```
+
+### 开发调试
+
+```bash
+# 构建插件
+pnpm --filter @zhengzhuangpro/dsh-hotnews bundle
+
+# 安装到本地 DSH
+pnpm install:profile @zhengzhuangpro/dsh-hotnews
+
+# 启动 DSH 开发服务器
+npx @deepseek-ai/dsh@latest web --port 3081
+```
+
+修改代码后重新构建，刷新页面即可：
+
+```bash
+pnpm --filter @zhengzhuangpro/dsh-hotnews bundle
+```
+
+### 类型检查
+
+```bash
+pnpm --filter @zhengzhuangpro/dsh-hotnews typecheck
+```
+
+---
+
+## 📦 打包与发布
+
+### 打包
+
+```bash
+pnpm --filter @zhengzhuangpro/dsh-hotnews bundle
+```
+
+产物输出到 `lib/` 目录：
+
+```
+lib/
+├── index.js          # 入口（invariant + host 逻辑）
+├── invariant.js      # 插件契约声明
+└── client.js         # 客户端 UI（Slot 注册 / 组件 / 样式 / i18n）
+```
+
+### 发布
+
+```bash
+# 进入包目录
+cd packages/hotnews-dsh
+
+# 发布正式版
+npm publish --access public
+
+# 发布 beta 版
+npm publish --access public --tag beta
+```
+
+> ⚠️ `npm publish` 会自动触发 `prepublishOnly` 钩子执行 `npm run bundle`，无需手动先 build。
+
+### 升级版本
+
+```bash
+cd packages/hotnews-dsh
+
+# 补丁版本 0.0.2 -> 0.0.3
+npm version patch
+
+# beta 版本 0.0.2-beta.1 -> 0.0.2-beta.2
+npm version prerelease --preid=beta
+```
+
+---
+
+## 📖 技术实现
+
+- 数据来源：[hotnews](https://github.com/zhengzhuangpro/hotnews)（≥ 0.1.7-beta.0）npm 库
+- 构建时将 `fetchNews` / `sources` API 打包进 `lib/index.js`
+- 用户安装时**无需额外依赖**，数据通过 Host 同源路由中转，**无跨域问题**
+
+## 📄 许可
 
 [MIT](../../LICENSE)

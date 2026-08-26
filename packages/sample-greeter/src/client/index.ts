@@ -31,7 +31,7 @@ import { injectStyle } from './style'
 import { resetGreetingState } from './store'
 import css from './greeter.css'
 
-const PLUGIN_ID = '@dsh-ecosystem/sample-greeter'
+const PLUGIN_ID = '@zhengzhuangpro/dsh-sample-greeter'
 const NS = 'greeter'
 
 /** 本插件注入的 cordis 服务。 */

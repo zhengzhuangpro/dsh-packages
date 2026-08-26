@@ -29,7 +29,7 @@ DSH Web 界面（浏览器侧）是一个 Cordis 运行时。一个 **客户端�
    ```yaml
    - insert:
        - id: my-plugin
-         name: "@dsh-ecosystem/my-plugin"
+         name: "@zhengzhuangpro/my-plugin"
    ```
 2. 对每个 loader 条目读取 `package.json` 的 `dsh.client` → 要求 `platform === "web"`
 3. 读取 `exports["./client"]`（字符串或 `{ default }`）→ 定位产物文件
@@ -46,7 +46,7 @@ DSH Web 界面（浏览器侧）是一个 Cordis 运行时。一个 **客户端�
 
 ```jsonc
 {
-  "name": "@dsh-ecosystem/my-plugin",
+  "name": "@zhengzhuangpro/my-plugin",
   "type": "module",
   "main": "lib/index.js",                     // 必须：Host 空入口（Loader 挂载条目用）
   "files": ["lib"],
@@ -296,7 +296,7 @@ npx @deepseek-ai/dsh@latest plugin --profile web add <pkg>
    # profile 的 cordis.patch.yml
    - insert:
        - id: my-plugin
-         name: "@dsh-ecosystem/my-plugin"
+         name: "@zhengzhuangpro/my-plugin"
    ```
 
    注意：本机 web profile 可能有 `@deepseek-ai/dsh-client-ui-snake: "workspace:^"`

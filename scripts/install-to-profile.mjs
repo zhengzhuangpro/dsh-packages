@@ -18,7 +18,7 @@
  * 示例：
  *   pnpm install:profile sample-greeter
  *   pnpm install:profile web sample-greeter --fix-workspace
- *   pnpm install:profile web @dsh-ecosystem/sample-greeter@0.1.0
+ *   pnpm install:profile web @zhengzhuangpro/dsh-sample-greeter@0.1.0
  *
  * 加载机制（重要）：
  *   1. 包必须装进 profile（pnpm 管理 $DSH_HOME/profiles/<profile>/node_modules）

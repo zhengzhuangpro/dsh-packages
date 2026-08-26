@@ -11,7 +11,7 @@ import type { Context } from '@deepseek-ai/cordis'
 import type {} from '@deepseek-ai/dsh-invariants'
 
 /** 完整 npm 包名，invariants 服务按此保留所有权。 */
-const PACKAGE_NAME = '@dsh-ecosystem/sample-greeter'
+const PACKAGE_NAME = '@zhengzhuangpro/dsh-sample-greeter'
 
 /** Cordis companion 插件名。 */
 export const name = 'sample-greeter-invariant'

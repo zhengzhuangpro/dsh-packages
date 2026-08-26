@@ -41,8 +41,8 @@ pnpm install
 ## 第 2 步：确认骨架可构建
 
 ```bash
-pnpm --filter @dsh-ecosystem/session-stats typecheck
-pnpm --filter @dsh-ecosystem/session-stats bundle
+pnpm --filter @zhengzhuangpro/session-stats typecheck
+pnpm --filter @zhengzhuangpro/session-stats bundle
 ```
 
 期望输出三个产物：`lib/client.js`（浏览器侧）、`lib/index.js`（Host 空入口）、
@@ -95,7 +95,7 @@ npx @deepseek-ai/dsh@latest web        # 或 dsh --profile web
 | 界面上没出现 | ① 确认 `cordis.patch.yml` 里有 roster 条目（`- insert:` 块，`name: "..."` 指向你的包）② 确认 `package.json` 的 `dsh.client.platform === "web"` 与 `exports["./client"]` ③ 确认装的是最新构建（`lib/client.js` **和 `lib/index.js`**——后者是 Loader 挂载条目的 Host 空入口，缺失则插件不会加载）④ Console 看 fiber 报错 |
 | 改了代码不生效 | `file:` 安装是**拷贝**不是链接：重新 `pnpm build` 后**必须重跑 install 脚本**，再刷新页面（HMR 按 rev 重新拉取） |
 | 类型报错（SlotMap 键不认识） | 缺座位声明方包的类型导入/依赖，见第 3 步第一条 |
-| 想卸载 | `npx @deepseek-ai/dsh@latest plugin --profile web remove @dsh-ecosystem/session-stats`，并手动删除 cordis.patch.yml 里对应的 roster 条目（`- insert:` 块） |
+| 想卸载 | `npx @deepseek-ai/dsh@latest plugin --profile web remove @zhengzhuangpro/session-stats`，并手动删除 cordis.patch.yml 里对应的 roster 条目（`- insert:` 块） |
 
 ## 第 6 步：发布（可选）
 
@@ -104,7 +104,7 @@ npx @deepseek-ai/dsh@latest web        # 或 dsh --profile web
 cd packages/session-stats
 pnpm publish --access public
 # 之后用户即可：
-# dsh plugin --profile web add @dsh-ecosystem/session-stats
+# dsh plugin --profile web add @zhengzhuangpro/session-stats
 ```
 
 发布前确认：`files` 含 `lib`、peerDependencies 版本与 DSH 对齐、产物为最新构建。

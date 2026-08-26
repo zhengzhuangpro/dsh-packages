@@ -7,7 +7,7 @@
  *
  * 示例：
  *   pnpm create:plugin session-stats
- *   → 生成 packages/session-stats/（包名 @dsh-ecosystem/session-stats）
+ *   → 生成 packages/session-stats/（包名 @zhengzhuangpro/session-stats）
  *
  * 生成内容（与 sample-greeter 同构，对齐官方包目录结构，可直接构建并安装）：
  *   package.json   # dsh.client 声明 + main/exports（"." / "./invariant" / "./client"）+ scripts
@@ -24,7 +24,7 @@
  *   README.md
  *
  * 生成后：
- *   pnpm --filter @dsh-ecosystem/<name> typecheck
+ *   pnpm --filter @zhengzhuangpro/<name> typecheck
  *   pnpm build
  *   pnpm install:profile <name>
  */
@@ -53,7 +53,7 @@ if (existsSync(pkgDir)) {
   process.exit(1)
 }
 
-const pkgName = `@dsh-ecosystem/${name}`
+const pkgName = `@zhengzhuangpro/dsh-${name}`
 /** kebab-case → PascalCase，用于类型/组件标识符（如 session-stats → SessionStats）。 */
 const pascal = name
   .split('-')

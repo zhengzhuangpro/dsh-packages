@@ -1,31 +1,47 @@
 # @zhengzhuangpro/dsh-hotnews
 
-View trending news inside [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 📰
+[![npm version](https://img.shields.io/npm/v/@zhengzhuangpro/dsh-hotnews.svg)](https://www.npmjs.com/package/@zhengzhuangpro/dsh-hotnews)
+[![npm downloads](https://img.shields.io/npm/dm/@zhengzhuangpro/dsh-hotnews.svg)](https://www.npmjs.com/package/@zhengzhuangpro/dsh-hotnews)
+[![license](https://img.shields.io/npm/l/@zhengzhuangpro/dsh-hotnews.svg)](../../LICENSE)
 
-Baidu · Weibo · Douyin · Hupu · Zhihu · Juejin · 36Kr · GitHub — all in one tab.
+> 📰 View trending news inside [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) — Baidu · Weibo · Douyin · Hupu · Zhihu · Juejin · 36Kr · GitHub, all in one tab.
 
-## Preview
+## ✨ Features
 
-After installation and restart, a 🔥 **Hot News** tab appears at the top of the conversation view (alongside Chat). The full-featured panel includes:
+- 🔥 **8 platforms aggregated**: Baidu, Weibo, Douyin, Hupu, Zhihu, Juejin, 36Kr, GitHub
+- 🎨 **Auto theme**: Follows DSH light / dark mode
+- 🌐 **i18n ready**: Chinese / English follows interface language
+- 🔄 **One-click refresh**: Get the latest trending data in real time
+- 🖱️ **Click to open**: Jump directly to the original article
+- 📦 **Zero config**: Data served through same-origin Host route, no CORS issues
 
-- Source switcher chips (tap to change platform)
-- Refresh button + last-updated timestamp
-- Hot list (title / popularity / click to open original)
-- Auto light/dark theme, zh/en language follows interface setting
+## 📸 Preview
 
-## Install
+```
+┌─────────────────────────────────────────────┐
+│  [ Chat ]  [ 🔥 Hot News ]                  │
+├─────────────────────────────────────────────┤
+│  [Baidu] [Weibo] [Douyin] [Hupu] [Zhihu]...│
+│                                              │
+│  1. Trending topic #1               12.3M   │
+│  2. Trending topic #2                8.9M   │
+│  3. ...                                      │
+└─────────────────────────────────────────────┘
+```
 
-**Option 1 (recommended): Just ask the AI**
+## 🚀 Install
 
-Open the DSH Web interface and type in chat:
+### Option 1: Ask the AI (Recommended)
 
-> 帮我安装一下 dsh plugin --profile web add @zhengzhuangpro/dsh-hotnews
+Type in the DSH Web chat:
 
-The AI will install it and add the required config automatically, then restart to activate.
+```
+帮我安装 dsh plugin --profile web add @zhengzhuangpro/dsh-hotnews
+```
 
-**Option 2: One-liner for the terminal**
+The AI will install and configure everything automatically.
 
-Install the package and append the required config entry in one step:
+### Option 2: Terminal
 
 ```bash
 npx dsh plugin --profile web add @zhengzhuangpro/dsh-hotnews \
@@ -42,43 +58,107 @@ Then restart:
 npx @deepseek-ai/dsh@latest web
 ```
 
-> ⚠ Running only `npx dsh plugin --profile web add` without the config entry
-> will leave the plugin unloaded (the Hot News tab won't appear and `/hotnews/api` returns 404).
-> The DSH design requires both steps — the command above handles them together.
+> ⚠️ Running only `npx dsh plugin add` without the config entry will leave the plugin unloaded. The command above handles both steps.
 
-## Data Source
-
-The plugin uses the [hotnews](https://github.com/zhengzhuangpro/hotnews) (>= 0.1.7-beta.0) npm library's
-`fetchNews` / `sources` API, bundled into `lib/index.js` at build time —
-end users **do not need to install hotnews**, and there are **no CORS issues**
-(data is served through a same-origin Host route).
-
-## Development
-
-```bash
-git clone <this repo>
-pnpm install
-pnpm --filter @zhengzhuangpro/dsh-hotnews bundle
-pnpm install:profile @zhengzhuangpro/dsh-hotnews
-npx @deepseek-ai/dsh@latest web --port 3081
-```
-
-After editing code:
-
-```bash
-pnpm --filter @zhengzhuangpro/dsh-hotnews bundle
-pnpm install:profile @zhengzhuangpro/dsh-hotnews
-# Then just refresh the page — no reinstall needed.
-```
-
-## Uninstall
+## 🗑️ Uninstall
 
 ```bash
 dsh plugin --profile web remove @zhengzhuangpro/dsh-hotnews
-# Also manually delete the - insert: block for this plugin from
+# Also remove the corresponding - insert: block from
 # ~/.dsh/profiles/web/cordis.patch.yml
 ```
 
-## License
+---
+
+## 🛠️ Development
+
+### Setup
+
+```bash
+git clone https://github.com/zhengzhuangpro/dsh-packages.git
+cd dsh-packages
+pnpm install
+```
+
+### Build & Debug
+
+```bash
+# Build the plugin
+pnpm --filter @zhengzhuangpro/dsh-hotnews bundle
+
+# Install to local DSH
+pnpm install:profile @zhengzhuangpro/dsh-hotnews
+
+# Start dev server
+npx @deepseek-ai/dsh@latest web --port 3081
+```
+
+After editing code, rebuild and refresh:
+
+```bash
+pnpm --filter @zhengzhuangpro/dsh-hotnews bundle
+```
+
+### Type Check
+
+```bash
+pnpm --filter @zhengzhuangpro/dsh-hotnews typecheck
+```
+
+---
+
+## 📦 Build & Publish
+
+### Build
+
+```bash
+pnpm --filter @zhengzhuangpro/dsh-hotnews bundle
+```
+
+Output in `lib/`:
+
+```
+lib/
+├── index.js          # Entry (invariant + host logic)
+├── invariant.js      # Plugin contract declaration
+└── client.js         # Client UI (Slot registration / components / styles / i18n)
+```
+
+### Publish
+
+```bash
+# Enter package directory
+cd packages/hotnews-dsh
+
+# Publish stable
+npm publish --access public
+
+# Publish beta
+npm publish --access public --tag beta
+```
+
+> ⚠️ `npm publish` automatically triggers the `prepublishOnly` hook to run `npm run bundle` — no need to build manually first.
+
+### Bump Version
+
+```bash
+cd packages/hotnews-dsh
+
+# Patch 0.0.2 -> 0.0.3
+npm version patch
+
+# Beta 0.0.2-beta.1 -> 0.0.2-beta.2
+npm version prerelease --preid=beta
+```
+
+---
+
+## 📖 Technical Details
+
+- Data source: [hotnews](https://github.com/zhengzhuangpro/hotnews) (≥ 0.1.7-beta.0) npm library
+- `fetchNews` / `sources` API bundled into `lib/index.js` at build time
+- End users **do not need to install hotnews**, data served through same-origin Host route
+
+## 📄 License
 
 [MIT](../../LICENSE)
