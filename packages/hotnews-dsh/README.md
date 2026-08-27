@@ -4,11 +4,11 @@
 [![npm downloads](https://img.shields.io/npm/dm/@zhengzhuangpro/dsh-hotnews.svg)](https://www.npmjs.com/package/@zhengzhuangpro/dsh-hotnews)
 [![license](https://img.shields.io/npm/l/@zhengzhuangpro/dsh-hotnews.svg)](../../LICENSE)
 
-> 📰 在 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 里看热搜——百度 / 微博 / 抖音 / 虎扑 / 知乎 / 掘金 / 36氪 / GitHub，一个页签搞定。
+> 📰 在 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 里看热搜——百度 / 微博 / 抖音 / 虎扑 / 知乎 / 掘金 / 36氪 / GitHub / 少数派 / V2EX / 华尔街见闻，一个页签搞定。
 
 ## ✨ 功能亮点
 
-- 🔥 **八大平台热榜聚合**：百度、微博、抖音、虎扑、知乎、掘金、36氪、GitHub
+- 🔥 **十一大平台热榜聚合**：百度、微博、抖音、虎扑、知乎、掘金、36氪、GitHub、少数派、V2EX、华尔街见闻
 - 🎨 **自动主题适配**：跟随 DSH 亮色 / 暗色主题
 - 🌐 **中英文国际化**：跟随界面语言自动切换
 - 🔄 **一键刷新**：实时获取最新热榜数据
@@ -21,7 +21,7 @@
 ┌─────────────────────────────────────────────┐
 │  [ Chat ]  [ 🔥 热榜 ]                      │
 ├─────────────────────────────────────────────┤
-│  [百度] [微博] [抖音] [虎扑] [知乎] ...       │
+│  [百度] [微博] [抖音] [虎扑] [知乎] [V2EX] ...│
 │                                              │
 │  1. 某某热搜话题                    1234万    │
 │  2. 某某新闻事件                     890万    │

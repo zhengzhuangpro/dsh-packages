@@ -4,11 +4,11 @@
 [![npm downloads](https://img.shields.io/npm/dm/@zhengzhuangpro/dsh-hotnews.svg)](https://www.npmjs.com/package/@zhengzhuangpro/dsh-hotnews)
 [![license](https://img.shields.io/npm/l/@zhengzhuangpro/dsh-hotnews.svg)](../../LICENSE)
 
-> 📰 View trending news inside [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) — Baidu · Weibo · Douyin · Hupu · Zhihu · Juejin · 36Kr · GitHub, all in one tab.
+> 📰 View trending news inside [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) — Baidu · Weibo · Douyin · Hupu · Zhihu · Juejin · 36Kr · GitHub · Sspai · V2EX · WallStreetCN, all in one tab.
 
 ## ✨ Features
 
-- 🔥 **8 platforms aggregated**: Baidu, Weibo, Douyin, Hupu, Zhihu, Juejin, 36Kr, GitHub
+- 🔥 **11 platforms aggregated**: Baidu, Weibo, Douyin, Hupu, Zhihu, Juejin, 36Kr, GitHub, Sspai, V2EX, WallStreetCN
 - 🎨 **Auto theme**: Follows DSH light / dark mode
 - 🌐 **i18n ready**: Chinese / English follows interface language
 - 🔄 **One-click refresh**: Get the latest trending data in real time
@@ -21,7 +21,7 @@
 ┌─────────────────────────────────────────────┐
 │  [ Chat ]  [ 🔥 Hot News ]                  │
 ├─────────────────────────────────────────────┤
-│  [Baidu] [Weibo] [Douyin] [Hupu] [Zhihu]...│
+│  [Baidu] [Weibo] [Douyin] [Hupu] [V2EX]... │
 │                                              │
 │  1. Trending topic #1               12.3M   │
 │  2. Trending topic #2                8.9M   │

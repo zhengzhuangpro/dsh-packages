@@ -1,7 +1,7 @@
 {
   "name": "@zhengzhuangpro/dsh-hotnews",
-  "version": "0.0.2-beta.2",
-  "description": "DSH Web 插件：在 DeepSeek Harness 浏览器界面内查看 hotnews 聚合的热门新闻（百度/微博/抖音/虎扑/知乎/掘金/36氪/GitHub）。",
+  "version": "0.0.2-beta.3",
+  "description": "DSH Web 插件：在 DeepSeek Harness 浏览器界面内查看 hotnews 聚合的热门新闻（百度/微博/抖音/虎扑/知乎/掘金/36氪/GitHub/少数派/V2EX/华尔街见闻）。",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -62,8 +62,8 @@
     "@deepseek-ai/dsh-host-webserver": "^0.1.1-rc.2",
     "@deepseek-ai/dsh-invariants": "^0.1.1-rc.2",
     "@types/node": "^22.0.0",
-    "hotnews": "^0.1.7-beta.1",
     "@types/react": "~18.3.1",
+    "hotnews": "^0.1.7",
     "react": "^18.2.0",
     "typescript": "^5.7.0"
   }
