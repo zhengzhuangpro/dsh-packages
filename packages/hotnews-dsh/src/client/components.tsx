@@ -65,12 +65,14 @@ export function HotnewsView({ t }: HotnewsViewProps) {
         {state.items.map((item) => (
           <a
             key={`${item.rank}-${item.title}`}
-            className="dshn-item"
+            className={`dshn-item ${item.rank <= 3 ? 'dshn-item--top' : ''}`}
             href={item.url}
             target="_blank"
             rel="noreferrer noopener"
           >
-            <span className="dshn-item__rank">{item.rank}</span>
+            <span className={`dshn-item__rank ${item.rank <= 3 ? 'dshn-item__rank--top' : ''}`}>
+              {item.rank <= 3 ? getRankIcon(item.rank) : item.rank}
+            </span>
             <span className="dshn-item__title">{item.title}</span>
             {item.hot ? <span className="dshn-item__hot">{item.hot}</span> : null}
           </a>
@@ -78,6 +80,15 @@ export function HotnewsView({ t }: HotnewsViewProps) {
       </div>
     </div>
   )
+}
+
+function getRankIcon(rank: number): string {
+  switch (rank) {
+    case 1: return '🥇'
+    case 2: return '🥈'
+    case 3: return '🥉'
+    default: return String(rank)
+  }
 }
 
 function useNewsState() {

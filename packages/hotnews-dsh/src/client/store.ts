@@ -39,6 +39,9 @@ const INITIAL: NewsState = {
 let state: NewsState = INITIAL
 const listeners = new Set<() => void>()
 
+/** 缓存每个 source 的数据 */
+const cache = new Map<string, { items: NewsItemView[]; updatedAt: string }>()
+
 function emit(): void {
   for (const fn of listeners) fn()
 }
@@ -59,7 +62,8 @@ export function setSource(id: string): void {
   if (state.source === id) return
   state = { ...state, source: id }
   emit()
-  void refresh()
+  // 切换时使用缓存，如果没有缓存则获取
+  void loadSource(id, false)
 }
 
 /** 拉取来源目录（仅首次）。 */
@@ -76,15 +80,33 @@ async function ensureSources(): Promise<void> {
   }
 }
 
-export async function refresh(): Promise<void> {
+/** 加载指定 source 的数据，force=true 时强制刷新 */
+async function loadSource(sourceId: string, force: boolean): Promise<void> {
+  // 检查缓存
+  if (!force) {
+    const cached = cache.get(sourceId)
+    if (cached) {
+      state = { ...state, items: cached.items, updatedAt: cached.updatedAt, loading: false, error: null }
+      emit()
+      return
+    }
+  }
+
   state = { ...state, loading: true, error: null }
   emit()
   await ensureSources()
+
   try {
-    const res = await fetch(`/hotnews/api/list?source=${encodeURIComponent(state.source)}&limit=20`)
+    const res = await fetch(`/hotnews/api/list?source=${encodeURIComponent(sourceId)}&limit=20`)
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
     const data = (await res.json()) as { items: NewsItemView[]; updatedAt: string }
-    state = { ...state, loading: false, items: data.items ?? [], updatedAt: data.updatedAt ?? null }
+    const items = data.items ?? []
+    const updatedAt = data.updatedAt ?? null
+
+    // 更新缓存
+    cache.set(sourceId, { items, updatedAt: updatedAt ?? '' })
+
+    state = { ...state, loading: false, items, updatedAt }
     emit()
   } catch (error) {
     state = { ...state, loading: false, error: error instanceof Error ? error.message : String(error) }
@@ -92,8 +114,14 @@ export async function refresh(): Promise<void> {
   }
 }
 
+/** 刷新当前 source（点击刷新按钮时调用） */
+export async function refresh(): Promise<void> {
+  await loadSource(state.source, true)
+}
+
 /** 插件卸载时复位。 */
 export function resetNewsState(): void {
   state = INITIAL
+  cache.clear()
   emit()
 }

@@ -15,7 +15,10 @@ import type { Context } from '@deepseek-ai/cordis'
 // 装载 dsh-host-webserver 对 Context 的增强（ctx.webServer）
 import type {} from '@deepseek-ai/dsh-host-webserver'
 // hotnews npm 库（github.com/zhengzhuangpro/hotnews），构建时打包进产物
-import { fetchNews, sources } from 'hotnews'
+import { fetchNews, sources as allSources } from 'hotnews'
+
+/** 过滤掉不可用的源 */
+const sources = allSources.filter((s) => s.id !== 'v2ex')
 
 /** 声明 inject 让 Cordis 等待 webServer 服务就绪后再调用 apply。 */
 export const inject = ['webServer']
