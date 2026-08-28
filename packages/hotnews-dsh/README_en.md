@@ -31,6 +31,8 @@
 
 ## 🚀 Install
 
+> Since v0.0.2-beta.4, the plugin declares `dsh.bundle`, so `dsh plugin add` **activates it automatically** — no manual configuration needed.
+
 ### Option 1: Ask the AI (Recommended)
 
 Type in the DSH Web chat:
@@ -39,17 +41,12 @@ Type in the DSH Web chat:
 帮我安装 dsh plugin --profile web add @zhengzhuangpro/dsh-hotnews
 ```
 
-The AI will install and configure everything automatically.
+Install = activate. Just restart.
 
 ### Option 2: Terminal
 
 ```bash
-npx dsh plugin --profile web add @zhengzhuangpro/dsh-hotnews \
-  && cat << 'EOF' >> ~/.dsh/profiles/web/cordis.patch.yml
-- insert:
-    - id: dsh-hotnews
-      name: "@zhengzhuangpro/dsh-hotnews"
-EOF
+npx dsh plugin --profile web add @zhengzhuangpro/dsh-hotnews
 ```
 
 Then restart:
@@ -58,15 +55,17 @@ Then restart:
 npx @deepseek-ai/dsh@latest web
 ```
 
-> ⚠️ Running only `npx dsh plugin add` without the config entry will leave the plugin unloaded. The command above handles both steps.
+The install command automatically joins the plugin into the profile's layer stack
+(`dsh.profile.bundles`) — the bundled `cordis.patch.yml` loads with it.
+The Hot News tab works out of the box.
 
 ## 🗑️ Uninstall
 
 ```bash
 dsh plugin --profile web remove @zhengzhuangpro/dsh-hotnews
-# Also remove the corresponding - insert: block from
-# ~/.dsh/profiles/web/cordis.patch.yml
 ```
+
+Uninstall is equally automatic: the plugin leaves the layer stack, no manual cleanup.
 
 ---
 

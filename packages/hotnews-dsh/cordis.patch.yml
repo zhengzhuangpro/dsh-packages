@@ -1,0 +1,6 @@
+# @zhengzhuangpro/dsh-hotnews 的配置层 patch：
+# dsh plugin add 检测到 dsh.bundle.patch 声明后，自动把本包加入
+# dsh.profile.bundles 层栈并加载本文件——无需用户手动追加 roster 条目。
+- insert:
+    - id: dsh-hotnews
+      name: "@zhengzhuangpro/dsh-hotnews"

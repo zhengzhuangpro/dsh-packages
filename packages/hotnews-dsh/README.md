@@ -31,6 +31,8 @@
 
 ## 🚀 安装
 
+> 自 v0.0.2-beta.4 起，插件声明了 `dsh.bundle`，`dsh plugin add` **自动激活**，无需任何手动配置。
+
 ### 方式一：AI 一键安装（推荐）
 
 在 DSH Web 界面聊天框中输入：
@@ -39,17 +41,12 @@
 帮我安装 dsh plugin --profile web add @zhengzhuangpro/dsh-hotnews
 ```
 
-AI 会自动完成安装和配置，重启即生效。
+安装即激活，重启生效。
 
-### 方式二：终端手动安装
+### 方式二：终端安装
 
 ```bash
-npx dsh plugin --profile web add @zhengzhuangpro/dsh-hotnews \
-  && cat << 'EOF' >> ~/.dsh/profiles/web/cordis.patch.yml
-- insert:
-    - id: dsh-hotnews
-      name: "@zhengzhuangpro/dsh-hotnews"
-EOF
+npx dsh plugin --profile web add @zhengzhuangpro/dsh-hotnews
 ```
 
 然后重启：
@@ -58,14 +55,16 @@ EOF
 npx @deepseek-ai/dsh@latest web
 ```
 
-> ⚠️ 仅执行 `npx dsh plugin add` 而不追加配置条目，插件不会加载（热榜页签不出现，`/hotnews/api` 返回 404）。上方命令已将两步合并处理。
+安装命令会自动把插件加入 profile 的配置层（`dsh.profile.bundles`），
+插件自带的 `cordis.patch.yml` 随层加载——热榜页签开箱即用。
 
 ## 🗑️ 卸载
 
 ```bash
 dsh plugin --profile web remove @zhengzhuangpro/dsh-hotnews
-# 同时删除 ~/.dsh/profiles/web/cordis.patch.yml 中对应的 - insert: 块
 ```
+
+卸载同样自动：插件离开配置层，无需手动清理任何文件。
 
 ---
 
