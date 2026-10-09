@@ -17,11 +17,11 @@
 
 import type { Context } from '@deepseek-ai/cordis'
 // 以下空类型导入用于装载 client 类型的模块增强：
-//   - dsh-client-runtime/client    → ctx.slots / ctx.sessions / ctx.workspaces
+//   - dsh-client-ui-renderer/client → ctx.slots（SlotRegistry 服务合并）
 //   - dsh-client-locale/client     → ctx.locale
 //   - dsh-client-ui-sidebar/client → SlotMap 中的 sidebar.* 键（含 sidebar.footer.action）
 //   - dsh-client-ui-conversation/client → SlotMap 中的 conversation.* 键（含 composer.dock）
-import type {} from '@deepseek-ai/dsh-client-runtime/client'
+import type {} from '@deepseek-ai/dsh-client-ui-renderer/client'
 import type {} from '@deepseek-ai/dsh-client-locale/client'
 import type {} from '@deepseek-ai/dsh-client-ui-sidebar/client'
 import type {} from '@deepseek-ai/dsh-client-ui-conversation/client'

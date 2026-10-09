@@ -1,11 +1,12 @@
 /**
  * dsh-hotnews 客户端插件入口。
  *
- * 契约（DSH Web 客户端插件）：
+ * 契约（DSH Web 客户端插件，dsh 0.2.x）：
  *   - 构建为 lib/client.js（__ModuleLoader__.load 格式），路径由
  *     package.json 的 exports["./client"] 声明
  *   - 必须导出 inject（cordis 服务名数组）与 apply(ctx)
- *   - 用到的 DSH 包在 package.json 的 dsh.client.inject 中声明（模块图依赖）
+ *   - dsh.client.inject 为信息性包名依赖边；基线之外的模块请求才走
+ *     dsh.client.external（本插件产物仅依赖 react，全在 PLATFORM_MODULES 基线内）
  *
  * 注册一个 conversation.view 视图页签（list 形态，风险 none）：
  *   占用会话主体主区域，与 chat / 轨迹视图并列，
@@ -15,9 +16,10 @@
 
 import type { Context } from '@deepseek-ai/cordis'
 // 空类型导入：装载 client 类型的模块增强（Context 服务 / SlotMap 键）
-import type {} from '@deepseek-ai/dsh-client-runtime/client'
 import type {} from '@deepseek-ai/dsh-client-locale/client'
 import type {} from '@deepseek-ai/dsh-client-ui-conversation/client'
+// ui-renderer/client 携带 SlotRegistry 服务合并（ctx.slots；官方骨架 ui-sidebar 同款用法）
+import type {} from '@deepseek-ai/dsh-client-ui-renderer/client'
 import { HotnewsView } from './components'
 import { dictionaries } from './i18n'
 import { injectStyle } from './style'
